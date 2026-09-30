@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bellini | Restaurante</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="overlay" id="overlay"></div>
+
+    <!-- MENU LATERAL (MOBILE) -->
+    <nav class="side-menu" id="sideMenu">
+        <button class="close-btn" id="closeMenu">&times;</button>
+        <a href="#">Início</a>
+        <a href="#cardapio">Cardápio</a>
+        <a href="#" id="menuReservaBtn">Reserva</a>
+        <a href="#" id="menuLoginBtn">Entrar/Cadastrar</a>
+    </nav>
+
+    <!-- HEADER -->
+    <header>
+        <div class="header-left">
+            <button class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="logo" onclick="window.scrollTo({top:0, behavior:'smooth'})">Bellini</div>
+        </div>
+
+        <nav class="desktop-menu">
+            <a href="#" class="active">Início</a>
+            <a href="#cardapio">Cardápio</a>
+            <a href="#" id="desktopReservaBtn">Reserva</a>
+        </nav>
+
+        <div class="header-right">
+            <button class="cart-icon-btn" id="cartBtn" title="Carrinho">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/>
+                </svg>
+                <span class="cart-badge" id="cartBadge" style="display:none;">0</span>
+            </button>
+            <button class="login-text-btn" id="headerLoginBtn">Entrar/Cadastrar</button>
+            <div class="user-icon" id="userIcon" title="Perfil">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                </svg>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <h1>Sexta do Vinho</h1>
+        <div class="hero-sub">De 18:00 às 23:00h</div>
+        <p>Toda sexta temos rodízio de vinho por R$ 90 reais por pessoa.</p>
+        <div class="dots">
+            <span class="active"></span>
+            <span></span>
+            <span></span>
+        </div>
+    </section>
+
+    <!-- MAIS PEDIDOS -->
+    <section class="section" id="cardapio">
+        <div class="section-header">
+            <h2>Mais pedidos</h2>
+            <a href="#">Ver mais</a>
+        </div>
+        <div class="cards-grid">
+            <div class="card" onclick="openDish('Bife à parmigiana', 'R$ 85', 'https://images.unsplash.com/photo-1632778149955-e80f8ceca2e8?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80')">
+                <img src="https://images.unsplash.com/photo-1632778149955-e80f8ceca2e8?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Bife à parmigiana">
+                <div class="card-body">
+                    <h3>Bife à parmigiana</h3>
+                    <p>Carne, molho e queijo</p>
+                    <span class="price">R$ 85</span>
+                </div>
+            </div>
+            <div class="card" onclick="openDish('Lasanha quatro queijos', 'R$ 68', 'https://images.unsplash.com/photo-1619895092538-128341789043?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80')">
+                <img src="https://images.unsplash.com/photo-1619895092538-128341789043?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Lasanha">
+                <div class="card-body">
+                    <h3>Lasanha quatro queijos</h3>
+                    <p>Massa, molho e queijos</p>
+                    <span class="price">R$ 68</span>
+                </div>
+            </div>
+            <div class="card" onclick="openDish('Salmão ao molho de maracujá', 'R$ 52', 'https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80')">
+                <img src="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Salmão">
+                <div class="card-body">
+                    <h3>Salmão ao molho de maracujá</h3>
+                    <p>Peixe e molho especial</p>
+                    <span class="price">R$ 52</span>
+                </div>
+            </div>
+            <div class="card" onclick="openDish('Filé à parmigiana', 'R$ 48', 'https://images.unsplash.com/photo-1600891964092-4316c288032e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80')">
+                <img src="https://images.unsplash.com/photo-1600891964092-4316c288032e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Filé">
+                <div class="card-body">
+                    <h3>Filé à parmigiana</h3>
+                    <p>Carne e queijo gratinado</p>
+                    <span class="price">R$ 98</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO CONDICIONAL: Seus Favoritos (logado) ou Cardápio (não logado) -->
+    <section class="section" id="secaoCondicional">
+        <!-- Preenchido via JS -->
+    </section>
+
+    <!-- SEÇÃO SUAS RESERVAS (SOMENTE QUANDO LOGADO) -->
+    <section class="section" id="secaoReservas" style="display:none;">
+        <div class="section-header">
+            <h2>Suas reservas</h2>
+            <a href="#" onclick="event.preventDefault(); openReserva()">+ Nova reserva</a>
+        </div>
+        <div id="reservasPageList">
+            <!-- Preenchido via JS -->
+        </div>
+    </section>
+
+    <!-- ENDEREÇO -->
+    <section class="address-section">
+        <div class="address-header">
+            <h2>Endereço:</h2>
+        </div>
+        <div class="address-map">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.614707121019!2d-48.49084968524182!3d-1.455779998957394!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x92a48e2b5c5f9b0b%3A0x9e8b1e8b1e8b1e8b!2sAv.%20Gentil%20Bittencourt%2C%20549%20-%20Batista%20Campos%2C%20Bel%C3%A9m%20-%20PA%2C%2066035-340!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+        <div class="address-footer">
+            <p>Av. Gentil Bittencourt, 549 - Batista Campos, Belém - PA, 66035-340</p>
+        </div>
+    </section>
+
+    <!-- ========== MODAL DETALHE DO PRATO ========== -->
+    <div class="modal fade" id="dishModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header border-0">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <img id="dishImg" src="" alt="" style="width:100%; height:200px; object-fit:cover; border-radius:12px; margin-bottom:1rem;">
+                    <h3 id="dishName" class="modal-title"></h3>
+                    <div id="dishPrice" style="font-size:1.2rem; font-weight:700; color:var(--accent-hover); margin:0.5rem 0;"></div>
+                    <p id="dishDesc" style="font-size:0.9rem; color:var(--text-secondary);"></p>
+                    <button class="btn btn-primary-custom w-100" onclick="addToCartFromModal()">Adicionar ao carrinho</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== MODAL CARRINHO ========== -->
+    <div class="modal fade" id="cartModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title">Seu Carrinho</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body" id="cartBody">
+                    <!-- Preenchido via JS -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== MODAL LOGIN ========== -->
+    <div class="modal fade" id="loginModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header border-0">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <div class="logo mb-4" style="font-size:2rem; display:block;">Bellini</div>
+                    <div class="text-start">
+                        <label class="form-label">E-mail:</label>
+                        <input type="email" class="form-control mb-3" id="loginEmail" placeholder="seu@email.com">
+                        <label class="form-label">Senha:</label>
+                        <input type="password" class="form-control mb-3" id="loginPassword" placeholder="••••••••">
+                    </div>
+                    <button class="btn btn-primary-custom w-100" onclick="doLogin()">Entrar</button>
+                    <span class="d-block mt-3 text-decoration-underline" style="color:var(--accent-hover); cursor:pointer;" onclick="openRegister()">Faça seu cadastro</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== MODAL CADASTRO ========== -->
+    <div class="modal fade" id="registerModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title">Criar Conta</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="text-start">
+                        <label class="form-label">Nome:</label>
+                        <input type="text" class="form-control mb-2" id="regName" placeholder="Seu nome">
+                        <label class="form-label">Sobrenome:</label>
+                        <input type="text" class="form-control mb-2" id="regSurname" placeholder="Seu sobrenome">
+                        <label class="form-label">Telefone:</label>
+                        <input type="tel" class="form-control mb-2" id="regPhone" placeholder="(11) 99999-9999">
+                        <label class="form-label">E-mail:</label>
+                        <input type="email" class="form-control mb-2" id="regEmail" placeholder="seu@email.com">
+                        <label class="form-label">Senha:</label>
+                        <input type="password" class="form-control mb-3" id="regPassword" placeholder="••••••••">
+                    </div>
+                    <button class="btn btn-primary-custom w-100" onclick="doRegister()">Cadastrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== MODAL RESERVA ========== -->
+    <div class="modal fade" id="reservaModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title">Reserva</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <label class="form-label">Pessoas</label>
+                    <div class="people-selector mb-4">
+                        <button onclick="changePeople(-1)">−</button>
+                        <span id="peopleCount">1</span>
+                        <button onclick="changePeople(1)">+</button>
+                    </div>
+
+                    <label class="form-label">Selecione o horário:</label>
+                    <div class="time-grid mb-4" id="timeGrid"></div>
+
+                    <label class="form-label">Data</label>
+                    <input type="date" class="form-control mb-4" id="reservaDate" min="">
+
+                    <div class="d-flex justify-content-between mt-4">
+                        <button class="btn btn-outline-custom" data-bs-dismiss="modal">Cancelar</button>
+                        <button class="btn btn-primary-custom" onclick="confirmReserva()">Reservar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== MODAL CONFIRMAÇÃO DE RESERVA ========== -->
+    <div class="modal fade" id="confirmModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body text-center p-4">
+                    <div class="modal-icon success">✓</div>
+                    <h3 class="modal-title mb-2" style="color:var(--success);">Reserva Confirmada!</h3>
+                    <p style="color:var(--text-secondary); font-size:0.9rem;">Sua reserva foi agendada com sucesso.</p>
+
+                    <div class="confirm-details">
+                        <p><strong>Pessoas:</strong> <span id="confPeople">1</span></p>
+                        <p><strong>Data:</strong> <span id="confDate">-</span></p>
+                        <p><strong>Horário:</strong> <span id="confTime">-</span></p>
+                        <p><strong>Endereço:</strong> Av. Gentil Bittencourt, 549 - Batista Campos</p>
+                    </div>
+
+                    <div class="d-flex gap-2 mt-3">
+                        <button class="btn btn-outline-custom flex-fill" onclick="closeConfirmAndOpenList()">
+                            Ver minhas reservas
+                        </button>
+                        <button class="btn btn-primary-custom flex-fill" data-bs-dismiss="modal">
+                            OK
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== MODAL MINHAS RESERVAS ========== -->
+    <div class="modal fade" id="reservasListModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title">Minhas Reservas</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body" id="reservasListBody">
+                    <!-- Preenchido via JS -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== MODAL CANCELAR RESERVA ========== -->
+    <div class="modal fade" id="cancelModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body text-center p-4">
+                    <div class="modal-icon danger">!</div>
+                    <h3 class="modal-title mb-2" style="color:var(--danger);">Cancelar Reserva</h3>
+                    <p style="color:var(--text-secondary); font-size:0.9rem;">Tem certeza que deseja cancelar esta reserva?</p>
+                    <p style="font-size:0.8rem; color:var(--text-secondary);">Esta ação não pode ser desfeita.</p>
+
+                    <div class="d-flex gap-2 mt-4">
+                        <button class="btn btn-outline-custom flex-fill" data-bs-dismiss="modal">
+                            Voltar
+                        </button>
+                        <button class="btn btn-danger-custom flex-fill" id="confirmCancelBtn">
+                            Sim, cancelar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== MODAL AVISO DE LOGIN NECESSÁRIO ========== -->
+    <div class="modal fade" id="loginRequiredModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body text-center p-4">
+                    <div class="modal-icon warning">🔒</div>
+                    <h3 class="modal-title mb-2" style="color:var(--warning);">Login Necessário</h3>
+                    <p style="color:var(--text-secondary); font-size:0.9rem;">
+                        Você precisa estar logado para fazer uma reserva.
+                    </p>
+                    <p style="font-size:0.85rem; color:var(--text-secondary);">
+                        Faça login ou crie uma conta para continuar.
+                    </p>
+
+                    <div class="d-flex gap-2 mt-4">
+                        <button class="btn btn-outline-custom flex-fill" data-bs-dismiss="modal">
+                            Agora não
+                        </button>
+                        <button class="btn btn-primary-custom flex-fill" onclick="goToLogin()">
+                            Fazer Login
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== MODAL MENSAGEM GENÉRICO ========== -->
+    <div class="modal fade" id="messageModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body text-center p-4">
+                    <div class="modal-icon" id="msgIcon">✓</div>
+                    <h3 class="modal-title mb-2" id="msgTitle">Sucesso!</h3>
+                    <p style="color:var(--text-secondary); font-size:0.95rem;" id="msgText">Operação realizada com sucesso.</p>
+
+                    <button class="btn btn-primary-custom w-100 mt-3" data-bs-dismiss="modal">
+                        OK
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== MODAL CONFIGURAÇÕES ========== -->
+    <div class="modal fade" id="settingsModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title">Configurações</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center mb-4">
+                        <div class="avatar mx-auto mb-2" style="width:80px; height:80px; border-radius:50%; background:var(--accent-hover); display:flex; align-items:center; justify-content:center; color:#fff; font-size:2rem;">👤</div>
+                        <h3 id="profileName" style="font-size:1.2rem; margin-bottom:0.2rem;">Jorge Peres</h3>
+                        <p id="profileEmail" style="font-size:0.8rem; color:var(--text-secondary);">jorge.peres55@gmail.com</p>
+                        <span class="text-decoration-underline" style="font-size:0.75rem; color:var(--accent-hover); cursor:pointer;">Mudar a foto</span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Nome</label>
+                        <input type="text" class="form-control" id="inputName" value="Jorge">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Sobrenome</label>
+                        <input type="text" class="form-control" id="inputSurname" value="Peres">
+                    </div>
+                    <button class="btn btn-primary-custom w-100 mb-4" onclick="updateProfile()">Atualizar</button>
+
+                    <h4 style="font-size:0.9rem; font-weight:700; color:var(--accent); margin-bottom:0.8rem; text-transform:uppercase; letter-spacing:0.5px;">Configurações da conta</h4>
+                    <div class="settings-item d-flex justify-content-between align-items-center py-2 border-bottom" style="border-color:var(--border-color)!important; cursor:pointer;" onclick="mostrarMensagem('info', 'Em breve', 'Funcionalidade em desenvolvimento.')">
+                        <div>
+                            <strong style="display:block; font-size:0.9rem;">Informações do perfil</strong>
+                            <span style="font-size:0.75rem; color:var(--text-secondary);">Alterar informações da conta</span>
+                        </div>
+                        <span style="color:var(--text-secondary); font-size:1.2rem;">›</span>
+                    </div>
+                    <div class="settings-item d-flex justify-content-between align-items-center py-2 border-bottom" style="border-color:var(--border-color)!important; cursor:pointer;" onclick="mostrarMensagem('info', 'Em breve', 'Funcionalidade em desenvolvimento.')">
+                        <div>
+                            <strong style="display:block; font-size:0.9rem;">Alterar senha</strong>
+                            <span style="font-size:0.75rem; color:var(--text-secondary);">Mudar sua senha</span>
+                        </div>
+                        <span style="color:var(--text-secondary); font-size:1.2rem;">›</span>
+                    </div>
+                    <div class="settings-item d-flex justify-content-between align-items-center py-2 border-bottom" style="border-color:var(--border-color)!important; cursor:pointer;" onclick="mostrarMensagem('info', 'Em breve', 'Funcionalidade em desenvolvimento.')">
+                        <div>
+                            <strong style="display:block; font-size:0.9rem;">Métodos de Pagamento</strong>
+                            <span style="font-size:0.75rem; color:var(--text-secondary);">Seus cartões de crédito e débito</span>
+                        </div>
+                        <span style="color:var(--text-secondary); font-size:1.2rem;">›</span>
+                    </div>
+                    <div class="settings-item d-flex justify-content-between align-items-center py-2 border-bottom" style="border-color:var(--border-color)!important; cursor:pointer;" onclick="mostrarMensagem('info', 'Em breve', 'Funcionalidade em desenvolvimento.')">
+                        <div>
+                            <strong style="display:block; font-size:0.9rem;">Localizações</strong>
+                            <span style="font-size:0.75rem; color:var(--text-secondary);">Adicionar ou remover localizações</span>
+                        </div>
+                        <span style="color:var(--text-secondary); font-size:1.2rem;">›</span>
+                    </div>
+
+                    <h4 style="font-size:0.9rem; font-weight:700; color:var(--accent); margin-top:1.5rem; margin-bottom:0.8rem; text-transform:uppercase; letter-spacing:0.5px;">Notificações</h4>
+                    <div class="d-flex justify-content-between align-items-center py-2 border-bottom" style="border-color:var(--border-color)!important;">
+                        <div>
+                            <strong style="display:block; font-size:0.9rem;">Notificações por push</strong>
+                            <span style="font-size:0.75rem; color:var(--text-secondary);">Atualizações diárias</span>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center py-2 border-bottom" style="border-color:var(--border-color)!important;">
+                        <div>
+                            <strong style="display:block; font-size:0.9rem;">Notificações Promocionais</strong>
+                            <span style="font-size:0.75rem; color:var(--text-secondary);">Você receberá atualizações diárias</span>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+
+                    <h4 style="font-size:0.9rem; font-weight:700; color:var(--accent); margin-top:1.5rem; margin-bottom:0.8rem; text-transform:uppercase; letter-spacing:0.5px;">Aparência</h4>
+                    <div class="d-flex justify-content-between align-items-center py-2 border-bottom" style="border-color:var(--border-color)!important;">
+                        <div>
+                            <strong style="display:block; font-size:0.9rem;">Modo Escuro</strong>
+                            <span style="font-size:0.75rem; color:var(--text-secondary);">Alterar tema do aplicativo</span>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox" id="darkModeToggle" onchange="toggleDarkMode()">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+
+                    <button class="btn btn-outline-custom w-100 mt-4" onclick="doLogout()">Sair</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== FOOTER ========== -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="logo">Bellini</div>
+                <p>Desde 2024 fazendo parte da sua história.</p>
+            </div>
+
+            <div>
+                <div class="footer-title">Redes Sociais</div>
+                <a href="https://wa.me/5591980000000" target="_blank" class="footer-item" title="Fale conosco pelo WhatsApp">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                    </svg>
+                    <span>WhatsApp</span>
+                </a>
+                <a href="https://instagram.com/bellini" target="_blank" class="footer-item" title="Siga-nos no Instagram">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    </svg>
+                    <span>Instagram</span>
+                </a>
+            </div>
+
+            <div>
+                <div class="footer-title">Contato</div>
+                <div class="footer-info">
+                    <a href="mailto:bellini@gmail.com" class="footer-item" title="Envie um e-mail">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                        </svg>
+                        <span>bellini@gmail.com</span>
+                    </a>
+                    <div class="footer-info-item">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
+                        </svg>
+                        <span>Quarta á Domingo</span>
+                    </div>
+                    <div class="footer-info-item">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
+                        </svg>
+                        <span>De 18:00 até 00:00</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-divider">
+            © Bellini Restaurante. Todos os direitos reservados.
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
